@@ -6,13 +6,11 @@ Plan meetings with clarity and purpose. Based on the book [*Masterclass for Meet
 
 ---
 
-## ▶️ Deploy Your Own (Free)
+## ▶️ Live App
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/jackwayne234/smeac-meeting-planner)
+**[Open SMEAC Meeting Planner](https://jackwayne234.github.io/smeac-meeting-planner/)**
 
-Click the button above → log in with GitHub → hit **Save & Deploy**. Done.
-
-Your app will be live at a permanent URL like `https://your-site-name.netlify.app` in about 2 minutes.
+Hosted on GitHub Pages — free, permanent, no account needed to use.
 
 ---
 
