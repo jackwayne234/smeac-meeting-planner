@@ -34,18 +34,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Patch localStorage for deployment
-        run: |
-          python3 -c "
-          import os
-          for f in os.listdir('dist/public/assets'):
-              if f.endswith('.js'):
-                  content = open(f'dist/public/assets/{f}').read()
-                  if 'localStorage' in content:
-                      content = content.replace('localStorage', 'window[\"l\"+\"ocalStorage\"]')
-                      open(f'dist/public/assets/{f}', 'w').write(content)
-          "
-
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
