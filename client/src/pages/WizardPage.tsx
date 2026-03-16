@@ -261,8 +261,9 @@ export default function WizardPage() {
         {step === 0 && (
           <div className="space-y-5">
             <GuidanceBox>
-              <strong style={{ color: "var(--color-text)" }}>Be honest about what's happening.</strong>{" "}
-              Don't sugarcoat the situation. A clear-eyed view of reality is the foundation of every effective meeting plan.
+              <strong style={{ color: "var(--color-text)" }}>Rule 1 — Situation must be brutally honest. Never sanitize.</strong>{" "}
+              Don't soften the truth. Say what is actually happening — risks, gaps, what's broken, what people are worried about.
+              A clear-eyed view of reality is the only foundation for an effective plan.
             </GuidanceBox>
             <div>
               <FieldLabel hint="What is this meeting about?">Meeting Title</FieldLabel>
@@ -296,10 +297,12 @@ export default function WizardPage() {
         {step === 1 && (
           <div className="space-y-5">
             <GuidanceBox>
-              <strong style={{ color: "var(--color-text)" }}>Be clear about what you want.</strong>{" "}
-              The mission statement should answer: <em>what</em> are we doing and <em>why</em>?
+              <strong style={{ color: "var(--color-text)" }}>Rule 2 — Mission should address each problem in the Situation. Always include the human outcome.</strong>
               <br /><br />
-              <em>Format:</em> "The purpose of this meeting is to <strong>[action]</strong> in order to <strong>[desired outcome]</strong>."
+              Your mission must connect directly to what you described in the Situation — every problem should have a corresponding action.
+              And always state what it means for the people involved. Taking care of people is the point.
+              <br /><br />
+              <em>Format:</em> "The purpose of this meeting is to <strong>[action]</strong> in order to <strong>[human outcome]</strong>."
             </GuidanceBox>
             <div>
               <FieldLabel hint="Complete the sentence below.">Mission Statement</FieldLabel>
@@ -314,8 +317,10 @@ export default function WizardPage() {
         {step === 2 && (
           <div className="space-y-5">
             <GuidanceBox>
-              <strong style={{ color: "var(--color-text)" }}>Every step needs an owner.</strong>{" "}
-              Vague plans fail. Write each step as a specific action, assign exactly one person, and give it a deadline.
+              <strong style={{ color: "var(--color-text)" }}>Rule 3 — Execution includes steps to address each issue. Vague plans fail.</strong>
+              <br /><br />
+              Each step must be a specific, concrete action — not a category or a general idea.
+              Assign exactly one person to each action and give it a due date.
               "Someone will handle it" is not a plan.
             </GuidanceBox>
             {plan.steps.map((s, i) => (
@@ -351,8 +356,10 @@ export default function WizardPage() {
         {step === 3 && (
           <div className="space-y-5">
             <GuidanceBox>
-              <strong style={{ color: "var(--color-text)" }}>Set yourself up to succeed.</strong>{" "}
-              What do you need to prepare <em>before</em> the meeting? Check everything that applies, then add any notes specific to your situation.
+              <strong style={{ color: "var(--color-text)" }}>Rule 4 — Administration is real logistics. This gets missed a lot.</strong>
+              <br /><br />
+              Emails, slides, data sheets, room reservations, print-outs — the meeting only runs smoothly if someone planned for it.
+              Check everything that applies and add any notes specific to your situation.
             </GuidanceBox>
             <div>
               <FieldLabel hint="Check everything you need to prepare">Logistics Checklist</FieldLabel>
@@ -392,8 +399,10 @@ export default function WizardPage() {
         {step === 4 && (
           <div className="space-y-5">
             <GuidanceBox>
-              <strong style={{ color: "var(--color-text)" }}>Who is in charge?</strong>{" "}
-              Write down the person running this meeting — name, email, and phone. This is your point of contact for everything related to this meeting.
+              <strong style={{ color: "var(--color-text)" }}>Rule 5 — Command &amp; Control closes the loop.</strong>
+              <br /><br />
+              Who is in charge, and who can people reach out to when they need help?
+              Everyone needs help sometimes. Make sure they know exactly who to call.
             </GuidanceBox>
             <div className="rounded-xl p-4 space-y-3"
               style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)" }}>
