@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ── SMEAC Planner — Navy & Gold theme ── */
+  :root,
+  [data-theme="light"] {
+    /* Surfaces */
+    --background:         250 20% 98%;
+    --foreground:         220 25% 15%;
+    --card:               250 20% 98%;
+    --card-foreground:    220 25% 15%;
+    --popover:            250 20% 98%;
+    --popover-foreground: 220 25% 15%;
+    --muted:              220 10% 92%;
+    --muted-foreground:   220 10% 45%;
+    --border:             220 15% 88%;
+    --input:              220 15% 88%;
+    --ring:               213 75% 25%;
+
+    /* Primary — Navy */
+    --primary:            213 75% 25%;
+    --primary-foreground: 45 60% 70%;
+
+    /* Secondary — soft */
+    --secondary:          220 15% 90%;
+    --secondary-foreground: 220 25% 20%;
+
+    /* Accent — Gold */
+    --accent:             40 55% 55%;
+    --accent-foreground:  220 25% 10%;
+
+    /* Semantic */
+    --destructive:        0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --radius: 0.75rem;
+
+    /* CSS vars for inline styles */
+    --color-bg:           #F5F5F8;
+    --color-surface:      #FFFFFF;
+    --color-border:       #E2E3E8;
+    --color-text:         #1A1D2E;
+    --color-text-muted:   #6B6E82;
+    --color-primary:      #0D2B45;
+    --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+    --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+    --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+    --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+    --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+  }
+
+  [data-theme="dark"] {
+    --background:         222 30% 9%;
+    --foreground:         220 15% 88%;
+    --card:               222 28% 12%;
+    --card-foreground:    220 15% 88%;
+    --popover:            222 28% 12%;
+    --popover-foreground: 220 15% 88%;
+    --muted:              222 20% 18%;
+    --muted-foreground:   220 10% 55%;
+    --border:             222 20% 20%;
+    --input:              222 20% 20%;
+    --ring:               213 55% 55%;
+
+    --primary:            213 55% 55%;
+    --primary-foreground: 220 25% 10%;
+    --secondary:          222 20% 18%;
+    --secondary-foreground: 220 15% 88%;
+    --accent:             40 50% 60%;
+    --accent-foreground:  220 25% 10%;
+    --destructive:        0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --color-bg:           #0F1117;
+    --color-surface:      #171B27;
+    --color-border:       #262B3D;
+    --color-text:         #E0E2EC;
+    --color-text-muted:   #8A8EA8;
+    --color-primary:      #5B8FC8;
+  }
+
+  * { border-color: hsl(var(--border)); }
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .hover-elevate {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .hover-elevate:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .active-elevate-2:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+}
