@@ -93,10 +93,8 @@ export function msUntilNextFreePlan(state: TrialState): number {
 }
 
 // ── Seed example plan ─────────────────────────────────────────────────────
-const SEED_KEY = "smeac_seeded_v1";
 
 export function seedExamplePlanIfNeeded(): void {
-  if (lsGet(SEED_KEY) === "true") return; // already seeded
   const example: SmeacPlan = {
     id: "example-plan-001",
     createdAt: new Date("2026-03-02T08:00:00").getTime(),
@@ -136,11 +134,11 @@ export function seedExamplePlanIfNeeded(): void {
     actionItems: [],
   };
   const existing = JSON.parse(lsGet(PLANS_KEY) || "[]") as SmeacPlan[];
-  // Only seed if no plans exist yet
-  if (existing.length === 0) {
-    lsSet(PLANS_KEY, JSON.stringify([example]));
+  // Add example plan if it's not already there
+  const hasExample = existing.some((p) => p.id === "example-plan-001");
+  if (!hasExample) {
+    lsSet(PLANS_KEY, JSON.stringify([example, ...existing]));
   }
-  lsSet(SEED_KEY, "true");
 }
 
 // ── Blank plan factory ─────────────────────────────────────────────────────

@@ -9,7 +9,7 @@ if (!window.location.hash) {
   window.location.hash = "#/";
 }
 
-// Seed example plan for first-time users
+// Seed example plan for first-time users — must run before any query fires
 seedExamplePlanIfNeeded();
 
 createRoot(document.getElementById("root")!).render(
