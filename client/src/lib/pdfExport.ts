@@ -119,7 +119,6 @@ export async function exportPlanAsPDF(plan: SmeacPlan): Promise<void> {
           label: "Checklist",
           value: plan.adminItems.length ? plan.adminItems.join(", ") : "—",
         },
-        ...(plan.adminNotes ? [{ label: "Notes", value: plan.adminNotes }] : []),
       ],
     },
     {
@@ -151,7 +150,9 @@ export async function exportPlanAsPDF(plan: SmeacPlan): Promise<void> {
       doc.splitTextToSize(`${b.label}: ${b.value || "—"}`, contentW - badgeW - 6)
     );
     const totalLines = bodyLines.reduce((a, b) => a + b.length, 0);
-    const sectionH = 8 + totalLines * 4.5 + 4;
+    // Add extra blank space in the Execution section for handwritten notes
+    const extraSpace = sec.letter === "E" ? 40 : 0;
+    const sectionH = 8 + totalLines * 4.5 + 4 + extraSpace;
 
     // Check page break
     if (y + sectionH > pageH - 20) {
@@ -200,6 +201,22 @@ export async function exportPlanAsPDF(plan: SmeacPlan): Promise<void> {
       doc.setFont("helvetica", "normal");
       doc.text(lines, cx + 2, fieldY + 3.5);
       fieldY += fh + 1.5;
+    }
+
+    // Draw faint ruled lines in the Execution section's extra space for note-taking
+    if (sec.letter === "E" && extraSpace > 0) {
+      const cx = margin + badgeW + 3;
+      const lineStartY = fieldY + 2;
+      const lineSpacing = 6;
+      const numLines = Math.floor((y + sectionH - lineStartY - 4) / lineSpacing);
+      doc.setDrawColor(210, 210, 210);
+      doc.setLineWidth(0.2);
+      for (let li = 0; li < numLines; li++) {
+        const lineY = lineStartY + li * lineSpacing;
+        if (lineY < y + sectionH - 3) {
+          doc.line(cx, lineY, margin + contentW - 2, lineY);
+        }
+      }
     }
 
     y += sectionH + 3;
