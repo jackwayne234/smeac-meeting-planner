@@ -25,12 +25,49 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Update banner (hidden by default) -->
+    <div id="update-banner" style="
+      display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+      z-index:9999; background:#1a1e25; border:1px solid rgba(228,175,80,0.3);
+      border-radius:12px; padding:12px 20px; box-shadow:0 8px 32px rgba(0,0,0,0.5);
+      font-family:'Outfit',sans-serif; font-size:14px; color:#e8e4dd;
+      display:none; align-items:center; gap:14px;
+    ">
+      <span>A new version is available</span>
+      <button id="update-btn" style="
+        background:#e4af50; color:#0d0f12; border:none; border-radius:8px;
+        padding:6px 16px; font-weight:600; font-size:13px; cursor:pointer;
+        font-family:'Outfit',sans-serif;
+      ">Update</button>
+    </div>
     <script>
       if ('serviceWorker' in navigator) {
+        let waitingWorker = null;
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js')
-            .then(() => console.log('[smeac] Service worker registered'))
-            .catch((e) => console.log('[smeac] SW registration failed:', e));
+          navigator.serviceWorker.register('./sw.js').then((reg) => {
+            // Check for waiting worker on load
+            if (reg.waiting) {
+              waitingWorker = reg.waiting;
+              document.getElementById('update-banner').style.display = 'flex';
+            }
+            // Listen for new worker installing
+            reg.addEventListener('updatefound', () => {
+              const newWorker = reg.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  waitingWorker = newWorker;
+                  document.getElementById('update-banner').style.display = 'flex';
+                }
+              });
+            });
+          });
+          // When the new SW takes over, reload
+          navigator.serviceWorker.addEventListener('controllerchange', () => {
+            window.location.reload();
+          });
+        });
+        document.getElementById('update-btn').addEventListener('click', () => {
+          if (waitingWorker) waitingWorker.postMessage('SKIP_WAITING');
         });
       }
     </script>
