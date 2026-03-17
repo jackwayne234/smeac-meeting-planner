@@ -35,7 +35,7 @@ export default function ExampleModal({ open, onClose, stepLetter, stepLabel, ste
           <div className="flex items-center gap-3">
             <div
               className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm"
-              style={{ background: stepColor, color: "#C9A84C" }}
+              style={{ background: stepColor, color: "#e4af50" }}
             >
               {stepLetter}
             </div>
@@ -50,9 +50,9 @@ export default function ExampleModal({ open, onClose, stepLetter, stepLabel, ste
         </div>
 
         {/* Book callout */}
-        <div className="mx-5 mt-4 rounded-xl px-4 py-3 flex items-start gap-3" style={{ background: "#0D2B45" }}>
-          <BookOpen size={16} className="mt-0.5 shrink-0" style={{ color: "#C9A84C" }} />
-          <p className="text-xs leading-relaxed" style={{ color: "#C9A84C" }}>
+        <div className="mx-5 mt-4 rounded-xl px-4 py-3 flex items-start gap-3" style={{ background: "#1a1e25" }}>
+          <BookOpen size={16} className="mt-0.5 shrink-0" style={{ color: "#e4af50" }} />
+          <p className="text-xs leading-relaxed" style={{ color: "#e4af50" }}>
             This example is based on a real-world scenario used in{" "}
             <em>Masterclass for Meetings</em> to demonstrate how SMEAC works in a corporate setting.
           </p>

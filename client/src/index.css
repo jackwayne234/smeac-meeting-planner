@@ -52,33 +52,33 @@
   }
 
   [data-theme="dark"] {
-    --background:         222 30% 9%;
-    --foreground:         220 15% 88%;
-    --card:               222 28% 12%;
-    --card-foreground:    220 15% 88%;
-    --popover:            222 28% 12%;
-    --popover-foreground: 220 15% 88%;
-    --muted:              222 20% 18%;
-    --muted-foreground:   220 10% 55%;
-    --border:             222 20% 20%;
-    --input:              222 20% 20%;
-    --ring:               213 55% 55%;
+    --background:         220 25% 5%;
+    --foreground:         30 10% 89%;
+    --card:               220 20% 9%;
+    --card-foreground:    30 10% 89%;
+    --popover:            220 20% 9%;
+    --popover-foreground: 30 10% 89%;
+    --muted:              220 15% 14%;
+    --muted-foreground:   25 5% 33%;
+    --border:             0 0% 100% / 0.06;
+    --input:              220 15% 14%;
+    --ring:               40 70% 55%;
 
-    --primary:            213 55% 55%;
-    --primary-foreground: 220 25% 10%;
-    --secondary:          222 20% 18%;
-    --secondary-foreground: 220 15% 88%;
-    --accent:             40 50% 60%;
-    --accent-foreground:  220 25% 10%;
+    --primary:            40 70% 55%;
+    --primary-foreground: 220 25% 7%;
+    --secondary:          220 15% 14%;
+    --secondary-foreground: 30 10% 89%;
+    --accent:             40 70% 55%;
+    --accent-foreground:  220 25% 7%;
     --destructive:        0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --color-bg:           #0F1117;
-    --color-surface:      #171B27;
-    --color-border:       #262B3D;
-    --color-text:         #E0E2EC;
-    --color-text-muted:   #8A8EA8;
-    --color-primary:      #5B8FC8;
+    --color-bg:           #0d0f12;
+    --color-surface:      #1a1e25;
+    --color-border:       rgba(255,255,255,0.06);
+    --color-text:         #e8e4dd;
+    --color-text-muted:   #8a8680;
+    --color-primary:      #e4af50;
   }
 
   * { border-color: hsl(var(--border)); }

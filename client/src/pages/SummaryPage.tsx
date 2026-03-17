@@ -9,18 +9,18 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import type { SmeacPlan } from "@shared/schema";
 
 const SECTIONS = [
-  { letter: "S", label: "Situation", color: "#0D2B45" },
-  { letter: "M", label: "Mission", color: "#1A4A6E" },
-  { letter: "E", label: "Execution", color: "#9A7030" },
-  { letter: "A", label: "Administration", color: "#1A4A6E" },
-  { letter: "C", label: "Command & Control", color: "#0D2B45" },
+  { letter: "S", label: "Situation", color: "#1a1e25" },
+  { letter: "M", label: "Mission", color: "#14171c" },
+  { letter: "E", label: "Execution", color: "#8a6a28" },
+  { letter: "A", label: "Administration", color: "#14171c" },
+  { letter: "C", label: "Command & Control", color: "#1a1e25" },
 ];
 
 function SectionCard({ letter, label, color, children }: { letter: string; label: string; color: string; children: React.ReactNode }) {
   return (
     <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid var(--color-border)" }}>
       <div className="flex items-center gap-3 px-4 py-3" style={{ background: color }}>
-        <span className="font-bold text-lg w-7 text-center" style={{ color: "#C9A84C" }}>{letter}</span>
+        <span className="font-bold text-lg w-7 text-center" style={{ color: "#e4af50" }}>{letter}</span>
         <span className="font-semibold text-sm text-white">{label}</span>
       </div>
       <div className="p-4 space-y-3" style={{ background: "var(--color-surface)" }}>
@@ -122,8 +122,8 @@ export default function SummaryPage() {
 
       <main className="max-w-lg mx-auto px-4 py-8 space-y-4">
         {/* Hero card */}
-        <div className="rounded-2xl p-5" style={{ background: "#0D2B45" }}>
-          <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: "#C9A84C" }}>SMEAC Meeting Plan</p>
+        <div className="rounded-2xl p-5" style={{ background: "#1a1e25" }}>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: "#e4af50" }}>SMEAC Meeting Plan</p>
           <h1 className="font-bold text-white mb-3" style={{ fontSize: "var(--text-xl)" }}>
             {plan.meetingTitle || "Untitled Plan"}
           </h1>
@@ -136,7 +136,7 @@ export default function SummaryPage() {
             {SECTIONS.map((s) => (
               <div key={s.letter}
                 className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm"
-                style={{ background: "rgba(201,168,76,0.2)", color: "#C9A84C" }}>
+                style={{ background: "rgba(201,168,76,0.2)", color: "#e4af50" }}>
                 {s.letter}
               </div>
             ))}
@@ -144,17 +144,17 @@ export default function SummaryPage() {
         </div>
 
         {/* S — Situation */}
-        <SectionCard letter="S" label="Situation" color="#0D2B45">
+        <SectionCard letter="S" label="Situation" color="#1a1e25">
           <Field label="Current State" value={plan.currentState} />
         </SectionCard>
 
         {/* M — Mission */}
-        <SectionCard letter="M" label="Mission" color="#1A4A6E">
+        <SectionCard letter="M" label="Mission" color="#14171c">
           <Field label="Mission Statement" value={plan.missionStatement} />
         </SectionCard>
 
         {/* E — Execution */}
-        <SectionCard letter="E" label="Execution" color="#9A7030">
+        <SectionCard letter="E" label="Execution" color="#8a6a28">
           {plan.steps.filter(s => s.action).length === 0 && (
             <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>No steps added.</p>
           )}
@@ -162,7 +162,7 @@ export default function SummaryPage() {
             <div key={i} className="rounded-xl p-3" style={{ background: "var(--color-bg)", border: "1px solid var(--color-border)" }}>
               <div className="flex items-start gap-2">
                 <div className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5"
-                  style={{ background: "#9A7030", color: "white" }}>{i + 1}</div>
+                  style={{ background: "#8a6a28", color: "white" }}>{i + 1}</div>
                 <div>
                   <p className="text-sm font-medium" style={{ color: "var(--color-text)" }}>{s.action}</p>
                   <div className="flex gap-3 mt-1 text-xs" style={{ color: "var(--color-text-muted)" }}>
@@ -176,14 +176,14 @@ export default function SummaryPage() {
         </SectionCard>
 
         {/* A — Administration */}
-        <SectionCard letter="A" label="Administration" color="#1A4A6E">
+        <SectionCard letter="A" label="Administration" color="#14171c">
           {plan.adminItems.length > 0 && (
             <div>
               <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--color-text-muted)" }}>Checklist</p>
               <div className="flex flex-wrap gap-2">
                 {plan.adminItems.map((item) => (
                   <span key={item} className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full"
-                    style={{ background: "#0D2B45", color: "#C9A84C" }}>
+                    style={{ background: "#1a1e25", color: "#e4af50" }}>
                     <Check size={10} strokeWidth={3} /> {item}
                   </span>
                 ))}
@@ -194,7 +194,7 @@ export default function SummaryPage() {
         </SectionCard>
 
         {/* C — Command & Control */}
-        <SectionCard letter="C" label="Command & Control" color="#0D2B45">
+        <SectionCard letter="C" label="Command & Control" color="#1a1e25">
           {(plan.leadName || plan.leadEmail || plan.leadPhone) && (
             <div className="rounded-xl p-3" style={{ background: "var(--color-bg)", border: "1px solid var(--color-border)" }}>
               <p className="text-xs font-semibold uppercase tracking-wide mb-1.5" style={{ color: "var(--color-text-muted)" }}>Meeting Lead</p>

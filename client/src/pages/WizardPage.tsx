@@ -11,11 +11,11 @@ import { EXAMPLES } from "@/lib/examples";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 const STEPS = [
-  { letter: "S", label: "Situation", color: "#0D2B45", sub: "What's actually happening right now?" },
-  { letter: "M", label: "Mission",   color: "#1A4A6E", sub: "What is the goal of this meeting?" },
-  { letter: "E", label: "Execution", color: "#9A7030", sub: "How will you get it done?" },
-  { letter: "A", label: "Administration", color: "#1A4A6E", sub: "What do you need to prepare?" },
-  { letter: "C", label: "Command & Control", color: "#0D2B45", sub: "Who is accountable?" },
+  { letter: "S", label: "Situation", color: "#1a1e25", sub: "What's actually happening right now?" },
+  { letter: "M", label: "Mission",   color: "#14171c", sub: "What is the goal of this meeting?" },
+  { letter: "E", label: "Execution", color: "#8a6a28", sub: "How will you get it done?" },
+  { letter: "A", label: "Administration", color: "#14171c", sub: "What do you need to prepare?" },
+  { letter: "C", label: "Command & Control", color: "#1a1e25", sub: "Who is accountable?" },
 ];
 
 const ADMIN_CHECKLIST = [
@@ -95,7 +95,7 @@ function StepIndicator({ current }: { current: number }) {
           <div
             className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all"
             style={{
-              background: i === current ? s.color : i < current ? "#C9A84C" : "var(--color-surface)",
+              background: i === current ? s.color : i < current ? "#e4af50" : "var(--color-surface)",
               color: i <= current ? "white" : "var(--color-text-muted)",
               border: i > current ? "1.5px solid var(--color-border)" : "none",
               transform: i === current ? "scale(1.15)" : "scale(1)",
@@ -104,7 +104,7 @@ function StepIndicator({ current }: { current: number }) {
             {i < current ? <Check size={14} /> : s.letter}
           </div>
           {i < STEPS.length - 1 && (
-            <div className="w-6 h-0.5 rounded" style={{ background: i < current ? "#C9A84C" : "var(--color-border)" }} />
+            <div className="w-6 h-0.5 rounded" style={{ background: i < current ? "#e4af50" : "var(--color-border)" }} />
           )}
         </div>
       ))}
@@ -191,7 +191,6 @@ export default function WizardPage() {
       try {
         await savePlan(plan);
         await qc.invalidateQueries({ queryKey: ["/api/plans"] });
-        await qc.invalidateQueries({ queryKey: ["/api/trial"] });
         navigate(`/summary/${plan.id}`);
       } finally {
         setSaving(false);
@@ -227,8 +226,8 @@ export default function WizardPage() {
             data-testid="button-see-example"
             className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full transition-colors"
             style={{
-              background: "#0D2B45",
-              color: "#C9A84C",
+              background: "#1a1e25",
+              color: "#e4af50",
             }}
           >
             <BookOpen size={12} /> See Example
@@ -244,7 +243,7 @@ export default function WizardPage() {
           <div className="flex items-center gap-3 mb-1">
             <div
               className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-lg"
-              style={{ background: currentStep.color, color: "#C9A84C" }}
+              style={{ background: currentStep.color, color: "#e4af50" }}
             >
               {currentStep.letter}
             </div>
@@ -370,13 +369,13 @@ export default function WizardPage() {
                     onClick={() => toggleAdmin(item)}
                     className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm text-left transition-all"
                     style={{
-                      background: plan.adminItems.includes(item) ? "#0D2B45" : "var(--color-surface)",
+                      background: plan.adminItems.includes(item) ? "#1a1e25" : "var(--color-surface)",
                       color: plan.adminItems.includes(item) ? "white" : "var(--color-text)",
-                      border: `1.5px solid ${plan.adminItems.includes(item) ? "#0D2B45" : "var(--color-border)"}`,
+                      border: `1.5px solid ${plan.adminItems.includes(item) ? "#1a1e25" : "var(--color-border)"}`,
                     }}>
                     <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0"
                       style={{
-                        background: plan.adminItems.includes(item) ? "#C9A84C" : "transparent",
+                        background: plan.adminItems.includes(item) ? "#e4af50" : "transparent",
                         border: plan.adminItems.includes(item) ? "none" : "1.5px solid var(--color-border)",
                       }}>
                       {plan.adminItems.includes(item) && <Check size={10} strokeWidth={3} />}
