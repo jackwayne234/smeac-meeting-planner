@@ -1,4 +1,4 @@
-const CACHE = 'smeac-v1';
+const CACHE = 'smeac-v2';
 
 // On install — cache all app shell files
 self.addEventListener('install', (e) => {
